@@ -7,6 +7,7 @@ package io.strimzi.testsuite.oauth;
 import io.strimzi.testsuite.oauth.common.TestContainersLogCollector;
 import io.strimzi.testsuite.oauth.common.TestContainersWatcher;
 import io.strimzi.testsuite.oauth.mockoauth.metrics.MetricsTest;
+import io.strimzi.testsuite.oauth.mockoauth.ClientAssertionAuthTest;
 import io.strimzi.testsuite.oauth.mockoauth.ConnectTimeoutTests;
 import io.strimzi.testsuite.oauth.mockoauth.JWKSKeyUseTest;
 import io.strimzi.testsuite.oauth.mockoauth.JaasClientConfigTest;
@@ -79,6 +80,9 @@ public class MockOAuthTests {
 
             // Keycloak authorizer tests
             new KeycloakAuthorizerTest().doTests();
+
+            logStart("ClientAssertionAuthTest :: Client Assertion Tests");
+            new ClientAssertionAuthTest().doTest();
 
         } catch (Throwable e) {
             log.error("Exception has occurred: ", e);
